@@ -3,21 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
 
-class Post extends Model
+class Comment extends Model
 {
     //
-    public function user(){
+    public function post(){
 
-        return $this->belongsTo('App\TestUser');
+        return $this->belongsTo('App/Post');
 
-    }
-
-    public function comments(){
-
-        return $this->hasMany('App\Comment');
-        
     }
 
     public $timestamps = false;
@@ -40,5 +33,6 @@ class Post extends Model
         // newした時に自動的にuuidを設定する。
         $this->attributes['id'] = Uuid::uuid4()->toString();
     }
-    
+
+
 }
